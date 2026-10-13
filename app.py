@@ -8,8 +8,11 @@ class StaticPageHandler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server = ThreadingHTTPServer(("0.0.0.0", 8000), StaticPageHandler)
-    print("Serving at http://localhost:8000")
+    host = "0.0.0.0"
+    port = 8000
+    server = ThreadingHTTPServer((host, port), StaticPageHandler)
+    print(f"Serving http://{host}:{port}")
+    print("Press Ctrl+C to stop the server")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
